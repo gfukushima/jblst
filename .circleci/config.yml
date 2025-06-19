@@ -22,7 +22,7 @@ executors:
     working_directory: ~/jblst
     environment:
       GRADLE_OPTS: -Xmx2048m -Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=2
-      HOMEBREW_NO_AUTO_UPDATE: false
+      HOMEBREW_NO_AUTO_UPDATE: true
 
 commands:
   checkout_code:
@@ -117,6 +117,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
+            brew install libpng
             echo "Installing openjdk 11 for test execution"
             brew install openjdk@11
             sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
