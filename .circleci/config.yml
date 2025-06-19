@@ -22,7 +22,7 @@ executors:
     working_directory: ~/jblst
     environment:
       GRADLE_OPTS: -Xmx2048m -Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=2
-      HOMEBREW_NO_AUTO_UPDATE: true
+      HOMEBREW_NO_AUTO_UPDATE: false
 
 commands:
   checkout_code:
