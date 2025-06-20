@@ -181,28 +181,16 @@ jobs:
       - run:
           name: Generate windows shared lib
           command: |
-            try {
-                  # Update PATH environment variable
-                  $Env:PATH = "$PWD\tdm\install\bin;$Env:PATH"
-            
-                  # Change to the Java bindings directory
-                  cd blst\bindings\java
-            
-                  # Run the build script
-                  ..\..\build.bat -D__BLST_PORTABLE__
-                  if (-not $?) {
-                  throw "Build failed. Error: $($Error[0])"
-                }
-            
-                  # Run the test script
-                  sh .\run.me -D__BLST_PORTABLE__
-                  if (-not $?) {
-                  throw "Tests failed. Error: $($Error[0])"
-                }
-            } catch {
-              # Catch any errors and output them
-              Write-Error "An error occurred: $_"
-              exit 1
+            $ErrorActionPreference = 'SilentlyContinue'
+            $Env:PATH = "$PWD\tdm\install\bin;$Env:PATH"
+            cd blst\bindings\java
+            ..\..\build.bat -D__BLST_PORTABLE__ -Verbose
+            if (-not $?) {
+              throw 'Build failed Error: '
+            }
+            sh .\run.me -D__BLST_PORTABLE__
+            if (-not $?) {
+              throw 'Tests failed'
             }
 
       - persist_to_workspace:
