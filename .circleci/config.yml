@@ -119,7 +119,7 @@ jobs:
           command: |
             
             echo "Installing swig"
-            brew install swig@4
+            brew install swig
             brew install gnu-sed
 
       - run:
