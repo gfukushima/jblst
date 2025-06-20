@@ -17,7 +17,7 @@ executors:
       GRADLE_OPTS: -Xmx2048m -Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=2
   mac_os_executor:
     macos:
-      xcode: "14.3.1"
+      xcode: "16.4.0"
     resource_class: macos.m1.medium.gen1
     working_directory: ~/jblst
     environment:
@@ -117,10 +117,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            echo "Installing openjdk 11 for test execution"
-            brew install openjdk@11
-            sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
-
+            
             echo "Installing swig"
             brew install swig@4
             brew install gnu-sed
