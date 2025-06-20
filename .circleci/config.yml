@@ -1,5 +1,5 @@
 ---
-version: 2.1
+version: 2.2
 
 orbs:
   win: circleci/windows@2.2.0
@@ -183,10 +183,7 @@ jobs:
           command: |
             $Env:PATH = "$PWD\tdm\install\bin;$Env:PATH"
             cd blst\bindings\java
-            ..\..\build.bat -D__BLST_PORTABLE__
-            if (-not $?) {
-              throw 'Build failed'
-            }
+            ..\..\build.bat -shared
             sh .\run.me -D__BLST_PORTABLE__
             if (-not $?) {
               throw 'Tests failed'
