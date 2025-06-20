@@ -186,7 +186,7 @@ jobs:
             cd blst\bindings\java
             ..\..\build.bat -D__BLST_PORTABLE__
             if (-not $?) {
-              throw 'Build failed Error: '
+              throw 'Build failed'
             }
             sh .\run.me -D__BLST_PORTABLE__
             if (-not $?) {
