@@ -181,7 +181,6 @@ jobs:
       - run:
           name: Generate windows shared lib
           command: |
-            $ErrorActionPreference = 'SilentlyContinue'
             $Env:PATH = "$PWD\tdm\install\bin;$Env:PATH"
             cd blst\bindings\java
             ..\..\build.bat -D__BLST_PORTABLE__
