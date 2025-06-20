@@ -184,7 +184,7 @@ jobs:
             $ErrorActionPreference = 'SilentlyContinue'
             $Env:PATH = "$PWD\tdm\install\bin;$Env:PATH"
             cd blst\bindings\java
-            ..\..\build.bat -D__BLST_PORTABLE__ -Verbose
+            ..\..\build.bat -D__BLST_PORTABLE__
             if (-not $?) {
               throw 'Build failed Error: '
             }
